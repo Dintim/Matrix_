@@ -3,9 +3,10 @@
 
 void main()
 {
-	matrix m(2,3,4);
-	m.print();
-	cout << m[1];
+	matrix m(2,3,0);
+	cin >> m;
+	cout << m;
+	
 	//m += 1;
 	//m.trans();
 	//m.print();

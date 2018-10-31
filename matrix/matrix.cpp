@@ -114,6 +114,17 @@ void matrix::print() const
 	cout << endl;
 }
 
+void matrix::setElement(int index1, int index2, int number)
+{
+	if (this->arr == nullptr) return;
+	this->arr[index1][index2] = number;
+}
+
+int matrix::getElement(int index1, int index2) const
+{	
+	return this->arr[index1][index2];
+}
+
 void matrix::trans()
 {
 	if (this->arr == nullptr) return;
@@ -209,6 +220,28 @@ bool operator==(const matrix & a, const matrix & b)
 
 ostream & operator<<(ostream & os, const matrix & obj)
 {
-	
+	for (size_t i = 0; i < obj.getI(); i++)
+	{
+		for (size_t j = 0; j < obj.getJ(); j++)
+		{
+			os << obj.getElement(i, j) << " ";
+		}
+		os << endl;
+	}
 	return os;
+}
+
+istream & operator>>(istream & is, matrix & obj)
+{
+	int tmp;
+	for (size_t i = 0; i < obj.getI(); i++)
+	{
+		for (size_t j = 0; j < obj.getJ(); j++)
+		{
+			is >> tmp;
+			obj.setElement(i, j, tmp);
+		}
+	}
+
+	return is;
 }
